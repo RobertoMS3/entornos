@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+   
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            border: 1px solid #f2f2f2;
+            background-color: #aff2f6;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+             text-align: center;
+             color: red;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #0b2200;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+   
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+
+        
+        input[type="text"] {
+            width: 50%;
+            padding: 5px;
+            font-size: small;
+        }
+    </style>
+    
+        <h1>Formulario</h1>
+    <form onsubmit="return validarFormulario()">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br><br>
+       
+        
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="edad" required><br><br>
+        <div id="edadError" style="color: red;"></div>
+        
+        <label for="sexo">Sexo:</label><br>
+        <select id="sexo" name="sexo" required>
+            <option value="femenino">Femenino</option>
+            <option value="masculino">Masculino</option>
+        </select><br><br>
+        
+        <label for="situacion">Situación Familiar:</label>
+        <select id="situacion" name="situacion" required>
+            <option value="soltero">Soltero</option>
+            <option value="casado">Casado</option>
+        </select><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+        <div id="emailError" style="color: red;"></div>
+        
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required><br><br>
+        <div id="telefonoError" style="color: red;"></div>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+   
+</body>
+<script>
+    function validarFormulario() {
+        let nombre = document.getElementById("nombre").value;
+        let apellidos = document.getElementById("apellidos").value;
+        let edad = document.getElementById("edad").value;
+        let email = document.getElementById("email").value;
+        let telefono = document.getElementById("telefono").value;
+        let edadError = document.getElementById("edadError");
+        let emailError = document.getElementById("emailError");
+        let telefonoError = document.getElementById("telefonoError");
+        
+        nombreError.innerHTML = "";
+        apellidosError.innerHTML = "";
+        edadError.innerHTML = "";
+        emailError.innerHTML = "";
+        telefonoError.innerHTML = "";
+
+        
+        }
+        if (isNaN(edad) || edad <= 18) {
+            edadError.innerHTML = "Debe ser un número válido mayor de 18 años.";
+            return false;
+        }
+
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            emailError.innerHTML = "El email debe tener el formato : algo@cosas.com.";
+            return false;
+        }
+
+        let telefonoRegex = /^[0-9\s]+$/;
+        if (!telefonoRegex.test(telefono)) {
+            telefonoError.innerHTML = "El teléfono solo puede contener números o espacios.";
+            return false;
+        }
+
+        nombre = nombre.toLowerCase();
+        nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+        apellidos = apellidos.toLowerCase();
+        apellidos = apellidos.charAt(0).toUpperCase() + apellidos.slice(1);
+
+        document.getElementById("nombre").value = nombre;
+        document.getElementById("apellidos").value = apellidos;
+
+        return true;
+    
+</script>
+
+</html>
+</html>
